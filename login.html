@@ -1,1 +1,130 @@
 
+<!-- LOGON TO EMC -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShortcutMoney login</title>
+</head>
+<body>
+<style>
+
+body {
+  background: Dictionary (Main Background);
+  font-family: Assistant, sans-serif;
+  display: flex;
+  min-height: 90vh;
+}
+.login {
+  color: white;
+  background: Dictionary (Frame Background);
+  background: -webkit-linear-gradient(to right, #267871, Dictionary (Frame Background));
+  background: linear-gradient(to right, #267871, Dictionary (Frame Background));
+  margin: auto;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2), 0px 10px 20px rgba(0,0,0,0.3), 0px 30px 60px 1px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 50px;
+}
+.login .head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .head .company {
+  font-size: 2.2em;
+}
+.login .warn {
+  text-align: center;
+  //color: #D0342C
+  font-size: 30px
+}
+.login .msg {
+  text-align: center;
+}
+.login .form input[type="number"].text {
+  border: none;
+  background: none;
+  box-shadow: 0px 2px 0px 0px white;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  outline: none;
+}
+.login .form .text::placeholder {
+  color: Dictionary (Placeholder Text Color);
+}
+.login .form input[type="password"].password {
+  border: none;
+  background: none;
+  box-shadow: 0px 2px 0px 0px white;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.login .form .password::placeholder {
+  color: Dictionary (Placeholder Text Color);
+}
+.login .form input[type="submit"] {
+  
+}
+.login .form .btn-login {
+  background: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0px 0px 0px 2px white;
+  border-radius: 3px;
+  padding: 5px 2em;
+  transition: 0.5s;
+}
+.login .form .btn-login:hover {
+  background: white;
+  color: dimgray;
+  transition: 0.5s;
+}
+.login .forgot {
+  text-decoration: none;
+  color: white;
+  float: right;
+}
+</style>
+<section class='login' id='login'>
+  <div class='head'>
+    <h1 class='company'>Dictionary (Shortcut Name) Login</h1>
+  </div>
+  <p class='msg'>Dictionary (Message)</p>
+  <div class='form'>
+    <form id="form" onsubmit="onsubmitform()">
+      <input type="number" min="1000000000" max="9999999999" placeholder='User Id' class='text' id='username' required><br>
+      <input type="password" placeholder='Password' class='password' id='password' required><br>
+      <input type="submit" class='btn-login' id='do-login' value="Login"></input>
+      <a href="#" class='forgot'>Forgot?</a>
+    </form>
+  </div>
+  <br/>
+  <p class="warn"><strong>If you close this tab then the login process will be stoped and you will have to start over!!!</strong></p>
+</section>
+<!-- partial -->
+<script>
+var data = {}
+var btnLogin = document.getElementById('do-login');
+var idLogin = document.getElementById('login');
+var username = document.getElementById('username');
+var password = document.getElementById('password');
+onsubmitform = function(){
+  data.username = username.value;
+  data.password = password.value;
+  const textarea = document.createElement('textarea');
+  textarea.value = JSON.stringify(data);
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  open("shortcuts://callback");
+  window.open('','_self').close();
+}
+</script>
+</body>
+</html>
